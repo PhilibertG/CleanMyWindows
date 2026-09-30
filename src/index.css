@@ -1,0 +1,193 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --radius: 0.75rem;
+  --background: oklch(0.985 0.004 285);
+  --foreground: oklch(0.2 0.02 285);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.2 0.02 285);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.2 0.02 285);
+  --primary: oklch(0.55 0.22 285);
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.955 0.01 285);
+  --secondary-foreground: oklch(0.25 0.03 285);
+  --muted: oklch(0.955 0.008 285);
+  --muted-foreground: oklch(0.5 0.02 285);
+  --accent: oklch(0.945 0.02 285);
+  --accent-foreground: oklch(0.25 0.03 285);
+  --destructive: oklch(0.58 0.22 25);
+  --border: oklch(0.915 0.01 285);
+  --input: oklch(0.915 0.01 285);
+  --ring: oklch(0.55 0.22 285);
+  --success: oklch(0.62 0.16 155);
+  --warning: oklch(0.72 0.16 70);
+  --chart-1: oklch(0.58 0.22 285);
+  --chart-2: oklch(0.65 0.15 200);
+  --chart-3: oklch(0.7 0.17 150);
+  --chart-4: oklch(0.75 0.16 75);
+  --chart-5: oklch(0.63 0.21 20);
+  --sidebar: oklch(0.97 0.008 285);
+  --sidebar-foreground: oklch(0.25 0.02 285);
+  --sidebar-primary: oklch(0.55 0.22 285);
+  --sidebar-primary-foreground: oklch(0.99 0 0);
+  --sidebar-accent: oklch(0.93 0.02 285);
+  --sidebar-accent-foreground: oklch(0.25 0.03 285);
+  --sidebar-border: oklch(0.915 0.01 285);
+  --sidebar-ring: oklch(0.55 0.22 285);
+  --hero-from: oklch(0.55 0.22 285);
+  --hero-to: oklch(0.6 0.2 330);
+
+  /* Palette catégorielle validée (ordre fixe, jamais recyclée). */
+  --series-1: #2a78d6;
+  --series-2: #eb6834;
+  --series-3: #1baf7a;
+  --series-4: #eda100;
+  --series-5: #e87ba4;
+  --series-6: #008300;
+  --series-7: #4a3aa7;
+  --series-8: #e34948;
+  --series-neutral: #b4b2aa;
+  --series-neutral-2: #898781;
+  --status-good: #0ca30c;
+  --status-warning: #fab219;
+  --status-critical: #d03b3b;
+}
+
+.dark {
+  --background: oklch(0.16 0.015 285);
+  --foreground: oklch(0.96 0.005 285);
+  --card: oklch(0.2 0.018 285);
+  --card-foreground: oklch(0.96 0.005 285);
+  --popover: oklch(0.21 0.018 285);
+  --popover-foreground: oklch(0.96 0.005 285);
+  --primary: oklch(0.68 0.19 285);
+  --primary-foreground: oklch(0.16 0.02 285);
+  --secondary: oklch(0.26 0.02 285);
+  --secondary-foreground: oklch(0.96 0.005 285);
+  --muted: oklch(0.25 0.018 285);
+  --muted-foreground: oklch(0.7 0.02 285);
+  --accent: oklch(0.28 0.03 285);
+  --accent-foreground: oklch(0.96 0.005 285);
+  --destructive: oklch(0.65 0.2 22);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 14%);
+  --ring: oklch(0.68 0.19 285);
+  --success: oklch(0.72 0.15 155);
+  --warning: oklch(0.8 0.15 75);
+  --chart-1: oklch(0.68 0.19 285);
+  --chart-2: oklch(0.72 0.13 200);
+  --chart-3: oklch(0.76 0.15 150);
+  --chart-4: oklch(0.8 0.14 75);
+  --chart-5: oklch(0.7 0.19 20);
+  --sidebar: oklch(0.18 0.016 285);
+  --sidebar-foreground: oklch(0.94 0.005 285);
+  --sidebar-primary: oklch(0.68 0.19 285);
+  --sidebar-primary-foreground: oklch(0.16 0.02 285);
+  --sidebar-accent: oklch(0.26 0.025 285);
+  --sidebar-accent-foreground: oklch(0.96 0.005 285);
+  --sidebar-border: oklch(1 0 0 / 8%);
+  --sidebar-ring: oklch(0.68 0.19 285);
+  --hero-from: oklch(0.5 0.2 285);
+  --hero-to: oklch(0.5 0.19 330);
+
+  --series-1: #3987e5;
+  --series-2: #d95926;
+  --series-3: #199e70;
+  --series-4: #c98500;
+  --series-5: #d55181;
+  --series-6: #008300;
+  --series-7: #9085e9;
+  --series-8: #e66767;
+  --series-neutral: #5d5c57;
+  --series-neutral-2: #45443f;
+}
+
+:root {
+  --cat-applications: var(--series-1);
+  --cat-archives: var(--series-2);
+  --cat-code: var(--series-3);
+  --cat-images: var(--series-4);
+  --cat-videos: var(--series-5);
+  --cat-audio: var(--series-6);
+  --cat-documents: var(--series-7);
+  --cat-temporary: var(--series-8);
+  --cat-system: var(--series-neutral-2);
+  --cat-other: var(--series-neutral);
+  --cat-folder: var(--series-neutral);
+  --cat-grouped: var(--series-neutral);
+}
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --font-sans: "Segoe UI Variable Text", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "Cascadia Mono", Consolas, monospace;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    overflow: hidden;
+    user-select: none;
+  }
+  input,
+  textarea,
+  .selectable {
+    user-select: text;
+  }
+}
+
+@utility hero-gradient {
+  background-image: linear-gradient(135deg, var(--hero-from), var(--hero-to));
+}
+
+@utility tabular {
+  font-variant-numeric: tabular-nums;
+}

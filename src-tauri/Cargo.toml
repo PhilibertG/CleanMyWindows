@@ -1,0 +1,54 @@
+[package]
+name = "clean-my-windows"
+version = "1.0.0"
+description = "CleanMyWindows — analyse de disque ultra-rapide et nettoyage intelligent"
+authors = ["CleanMyWindows"]
+edition = "2024"
+rust-version = "1.90"
+
+[lib]
+name = "cmw_lib"
+crate-type = ["rlib"]
+
+[[bin]]
+name = "clean-my-windows"
+path = "src/main.rs"
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+tauri-plugin-dialog = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+rayon = "1"
+parking_lot = "0.12"
+xxhash-rust = { version = "0.8", features = ["xxh3"] }
+mimalloc = "0.1.52"
+
+[dependencies.windows-sys]
+version = "0.61"
+features = [
+  "Win32_Foundation",
+  "Win32_Security",
+  "Win32_Storage_FileSystem",
+  "Win32_System_IO",
+  "Win32_System_Ioctl",
+  "Win32_System_Threading",
+  "Win32_System_SystemInformation",
+  "Win32_System_Com",
+  "Win32_UI_Shell",
+  "Win32_UI_Shell_Common",
+  "Win32_UI_WindowsAndMessaging",
+]
+
+[profile.release]
+opt-level = 3
+lto = "fat"
+codegen-units = 1
+panic = "abort"
+strip = true
+
+[profile.dev.package."*"]
+opt-level = 2
